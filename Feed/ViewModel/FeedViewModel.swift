@@ -10,7 +10,7 @@ import CloudKit
 
 @Observable
 @MainActor
-final class FeedViewModel {
+final class FeedViewModel { ///final class significa que ngm pode herdar, ela acaba é si 
     /// private(set) significa visivel para leitura, mas não para escrita fora da classe
     private(set) var posts: [PostModel] = []
     private(set) var isLoading = false

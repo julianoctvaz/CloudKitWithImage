@@ -234,12 +234,34 @@ query.sortDescriptors = [
 
 Portanto, confira os índices correspondentes no schema, incluindo os necessários para consulta e ordenação.
 
-Caso um campo necessário para a query não esteja indexado, o CloudKit pode retornar erros como:
+No CloudKit Console, acesse:
+
+**Schema → Indexes → Post**
+
+Caso o campo utilizado pela consulta não esteja marcado como **Queryable**, o CloudKit pode retornar:
 
 ```text
 Field 'recordName' is not marked queryable
 ```
 
+Nesse caso, configure o índice correspondente como **Queryable**.
+
+Da mesma forma, como o projeto ordena os posts por `creationDate`, o CloudKit precisa permitir a ordenação pelo campo de criação. Caso esse índice não esteja configurado, pode ocorrer:
+
+```text
+Field '_createdTime' is not marked sortable
+```
+
+Nesse caso, no CloudKit Console, configure o campo de criação correspondente como **Sortable**.
+
+Em resumo, para a consulta deste projeto, os índices devem permitir:
+
+| Campo | Índice |
+|---|---|
+| `recordName` | `Queryable` |
+| Campo de data de criação (`_createdTime`) | `Sortable` |
+
+> **Observação:** o nome apresentado no CloudKit Console e o nome interno exibido na mensagem de erro podem ser diferentes. `_createdTime` na mensagem de erro está relacionado ao campo de data de criação utilizado pela ordenação com `creationDate`.
 ---
 
 ## 6. Development x Production

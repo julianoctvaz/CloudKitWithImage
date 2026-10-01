@@ -52,7 +52,9 @@ actor CloudKitService: DataStreamServiceProtocol {
     /// O que fazemos aqui? Usamos records(matching:resultsLimit:), a API async que substitui o CKQueryOperation com closures. Cada resultado vem como Result, então um registro com defeito não derruba a lista inteira.
     func fetchPosts(limit: Int = 50) async throws -> [PostModel] {
         let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true)) // recordType é Post
+        ///DPS: vamos precisar configurar p recordName (variavel idenfiticadora de todo registro)  como queyrable no Cloudkit Console depois que rodarmos pela primeira vez para conseguir buscar aqui
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        ///DPS: vamos precisar configurar essa variavel como sortable no Cloudkit Console depois que rodarmos pela primeira vez
 
         let (results, _) = try await database.records(matching: query, resultsLimit: limit)
 
@@ -64,7 +66,7 @@ actor CloudKitService: DataStreamServiceProtocol {
     }
 
     // MARK: - Mapeando do CKRecord para o Post
-
+    /// aqui a gente transforma o dado do cloudkit para a estrutura que queremos usar na view
     private func makePost(from record: CKRecord) -> PostModel {
         var photoURL: URL? = nil
         if let asset = record["photo"] as? CKAsset {

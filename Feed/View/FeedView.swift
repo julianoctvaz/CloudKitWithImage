@@ -36,12 +36,12 @@ struct FeedView: View {
                 }
                 .padding(.vertical, 4)
             }
-            .overlay { // a gente vai colocar uma tela em cima caso:
+            .overlay { /// a gente vai colocar uma tela em cima caso:
                 //1 - Está carregando e ainda não existem posts
                 if viewModel.isLoading && viewModel.posts.isEmpty {
                     ProgressView()
                     
-                    // 2 - O carregamento falhou e não existem posts para exibir
+                // 2 - O carregamento falhou e não existem posts para exibir
                 } else if let errorMessage = viewModel.errorMessage,
                           viewModel.posts.isEmpty {
                     
@@ -60,7 +60,7 @@ struct FeedView: View {
                         }
                     }
                     
-                    // 3 - Terminou de carregar sem erro, mas nenhum post foi encontrado
+                // 3 - Terminou de carregar sem erro, mas nenhum post foi encontrado
                 } else if viewModel.posts.isEmpty {
                     ContentUnavailableView(
                         "Nenhum post",
@@ -74,7 +74,8 @@ struct FeedView: View {
                 Button("Novo post", systemImage: "plus") { isCreating = true }
             }
             .refreshable { await viewModel.load() } }
-        // Adiciona pull-to-refresh e mantém o indicador enquanto load() executa.
+        /// Adiciona pull-to-refresh e mantém o indicador enquanto load() executa. Um ícone circular animado aparece no topo da tela mostrando que o aplicativo está buscando novos dados.
+            
         .task { await viewModel.load() }
         .sheet(isPresented: $isCreating) {
             CreatePostView(service: service) { post in viewModel.insert(post) }

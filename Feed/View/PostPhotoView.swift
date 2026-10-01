@@ -24,10 +24,10 @@ struct PostPhotoView: View {
         }
         .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 250)
         .clipShape(.rect(cornerRadius: 8))
-        .task(id: url) { image = await Self.load(from: url) }
+        .task(id: url) { image = await load(from: url) }
     }
-
-    private static func load(from url: URL) async -> UIImage? {
+    /// poderia estar numa viewModel? Sim, mas ela resolve coisa de UI, entao preferi deixar aqui e por só funcao de um componente de FeedView
+    private func load(from url: URL) async -> UIImage? {
         UIImage(contentsOfFile: url.path) // se nao achar vai devolver nil
         }
 }

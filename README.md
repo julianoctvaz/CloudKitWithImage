@@ -264,6 +264,7 @@ Em resumo, para a consulta deste projeto, os índices devem permitir:
 > **Observação:** o nome apresentado no CloudKit Console e o nome interno exibido na mensagem de erro podem ser diferentes. `_createdTime` na mensagem de erro está relacionado ao campo de data de criação utilizado pela ordenação com `creationDate`.
 
 <img width="566" height="572" alt="image" src="https://github.com/user-attachments/assets/95cb0458-4287-406e-aced-8eacf79e7628" />
+
 Os indexes de text foram gerados automaticamente.
 
 ---

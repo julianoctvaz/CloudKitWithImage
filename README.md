@@ -2,6 +2,8 @@
 
 Exemplo de aplicação SwiftUI utilizando **CloudKit** para salvar e consultar posts contendo texto e imagem.
 
+OBS: É necessário ter uma conta ativa no Apple Developer Program -> https://developer.apple.com/programs/enroll/
+
 ## Imagens entre SwiftUI, PhotosUI e CloudKit
 
 Um dos pontos importantes deste projeto é entender que uma imagem passa por diferentes representações dependendo de onde está sendo utilizada.

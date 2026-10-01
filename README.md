@@ -246,7 +246,7 @@ Field 'recordName' is not marked queryable
 
 Nesse caso, configure o índice correspondente como **Queryable**.
 
-Da mesma forma, como o projeto ordena os posts por `creationDate` (creationDataStamp), o CloudKit precisa permitir a ordenação pelo campo de criação. Caso esse índice não esteja configurado, pode ocorrer:
+Da mesma forma, como o projeto ordena os posts por `creationDate` (creationDateStamp), o CloudKit precisa permitir a ordenação pelo campo de criação. Caso esse índice não esteja configurado, pode ocorrer:
 
 ```text
 Field '_createdTime' is not marked sortable
